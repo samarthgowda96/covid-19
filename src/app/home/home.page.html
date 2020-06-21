@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            <h1>Corona Virus Tracker..</h1>
+            <h1>Latest Update - {{this.update}}</h1>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Blank</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <h1>COVID-19 DASHBOARD</h1>
+    <div class="deaths">
+        <ion-label>
+            <h2>Confirmed Cases</h2>{{this.tconfirmed}}</ion-label> <br>
+        <ion-label>
+            <h2>Recovered Cases</h2>{{this.trecovered}}</ion-label> <br>
+        <ion-label>
+            <h2>Critical Cases</h2>{{this.tcritical}}</ion-label><br>
+        <ion-label>
+            <h2>Total Deaths</h2>{{this.tdeaths}}</ion-label>
+
+
+    </div>
+    <h1>Search by Country</h1>
+    <ion-content>
+
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="SearchCovidByCountry()" debounce="1000"></ion-searchbar>
+
+        <ion-list>
+
+            <ion-item button *ngFor="let item of items">
+                <!-- <ion-avatar slot="start"> -->
+                <div class="head">
+                    <h2>{{item.province}}</h2>
+                    <!-- <ion-label class="name">{{item.province}}</ion-label> -->
+                    <ion-label> Confirmed - {{item.confirmed}} || Active - {{item.active}} || Recovered - {{item.recovered}} || Deaths- {{item.deaths}}</ion-label>
+                </div>
+                <!-- </ion-avatar> -->
+            </ion-item>
+        </ion-list>
+    </ion-content>
